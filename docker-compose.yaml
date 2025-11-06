@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:18.0-alpine3.22
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: winedefaultuser
+      POSTGRES_PASSWORD: Gmkb1zRq1JNIa8nb
+      POSTGRES_DB: winequalitydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  
+  mlflow:
+    build: ./mlflow_server
+    container_name: mlflow_server
+    volumes:
+      - ./mlflow_server/local:/mlflow
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  prefect:
+    #image : prefecthq/prefect:3.5.0-python3.12-conda
+    build: ./prefect_server
+    container_name: prefect_server
+    ports:
+      - "4200:4200"
+    depends_on:
+      - db
+  
+#  api:
+#    build: ./api
+#    container_name: wine_quality_api
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db
+#      - mlflow
+#      - prefect
