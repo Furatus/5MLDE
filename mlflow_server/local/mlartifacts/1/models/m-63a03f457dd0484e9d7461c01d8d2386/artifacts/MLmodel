@@ -1,0 +1,20 @@
+artifact_path: mlflow-artifacts:/1/models/m-63a03f457dd0484e9d7461c01d8d2386/artifacts
+flavors:
+  keras:
+    data: data
+    keras_backend: tensorflow
+    keras_version: 3.12.0
+    save_exported_model: false
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.keras
+    python_version: 3.12.3
+mlflow_version: 3.5.1
+model_id: m-63a03f457dd0484e9d7461c01d8d2386
+model_size_bytes: 56250
+model_uuid: m-63a03f457dd0484e9d7461c01d8d2386
+prompts: null
+run_id: 7c35f51febcf40b28c0e9093f300a025
+utc_time_created: '2025-11-19 09:48:46.482413'

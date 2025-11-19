@@ -6,6 +6,7 @@ EXPOSE 5000
 ENV BACKEND_URI postgresql://winedefaultuser:Gmkb1zRq1JNIa8nb@db:5432/mlflowdb
 ENV ARTIFACT_ROOT http://localhost:5000
 ENV ARTIFACT_DESTINATION http://localhost:5000
+ENV MLFLOW_SERVER_ALLOWED_HOSTS *
 
 RUN pip install psycopg2-binary 
 
