@@ -10,11 +10,8 @@ services:
       - "5432:5432"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-<<<<<<< HEAD
     networks:
       - ml_network
-=======
->>>>>>> parent of 99b2feb (travail vendredi 9)
   
   mlflow:
     build: ./mlflow_server
@@ -25,11 +22,8 @@ services:
       - "5000:5000"
     depends_on:
       - db
-<<<<<<< HEAD
     networks:
       - ml_network
-=======
->>>>>>> parent of 99b2feb (travail vendredi 9)
 
   prefect:
     #image : prefecthq/prefect:3.5.0-python3.12-conda
@@ -39,7 +33,6 @@ services:
       - "4200:4200"
     depends_on:
       - db
-<<<<<<< HEAD
     networks:
       - ml_network
   
@@ -53,8 +46,6 @@ services:
     depends_on:
       - mlflow
       - prefect
-=======
->>>>>>> parent of 99b2feb (travail vendredi 9)
   
 #  api:
 #    build: ./api
@@ -64,11 +55,7 @@ services:
 #    depends_on:
 #      - db
 #      - mlflow
-<<<<<<< HEAD
 #      - prefect
 
 networks:
   ml_network:
-=======
-#      - prefect
->>>>>>> parent of 99b2feb (travail vendredi 9)
