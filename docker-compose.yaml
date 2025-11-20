@@ -61,5 +61,19 @@ services:
     networks:
       - ml_network
 
+  swagger-ui:
+    image: swaggerapi/swagger-ui:v5.17.14
+    container_name: swagger_ui
+    ports:
+      - "8080:8080"
+    environment:
+      - SWAGGER_JSON=/app/swagger/swagger.yaml
+    volumes:
+      - ./swagger.yaml:/app/swagger/swagger.yaml
+    networks:
+      - ml_network
+    depends_on:
+      - api
+
 networks:
   ml_network:
