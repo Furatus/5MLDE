@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import mlflow
 import mlflow.keras
@@ -227,3 +228,12 @@ def reload_model():
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/matthias")
+def matthias_endpoint():
+    """Moi je m'appelle Matthias"""
+    try :
+        return FileResponse("/app/media/Matthias.mp4", media_type="video/mp4", headers={"Content-Disposition": "inline"}, filename="matthias.mp4")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

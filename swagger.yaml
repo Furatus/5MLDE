@@ -245,6 +245,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPError'
+  
+  /matthias:
+    get:
+      tags:
+        - General
+      summary: Petit clin d'oeil/easter egg de Matthias (Second degré, bien sûr !)
+      description: Retourne une vidéo de Matthias
+      operationId: matthias_endpoint
+      responses:
+        '200':
+          description: 
+          content:
+            video/mp4:
+              schema:
+                type: string
+                format: binary
+        '500':
+          description: Erreur interne
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPError'
 
 components:
   schemas:
