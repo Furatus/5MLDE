@@ -46,16 +46,20 @@ services:
     depends_on:
       - mlflow
       - prefect
-  
-#  api:
-#    build: ./api
-#    container_name: wine_quality_api
-#    ports:
-#      - "8000:8000"
-#    depends_on:
-#      - db
-#      - mlflow
-#      - prefect
+      
+  api:
+    build: ./api
+    container_name: wine_quality_api
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - db
+      - mlflow
+    restart: unless-stopped
+    networks:
+      - ml_network
 
 networks:
   ml_network:

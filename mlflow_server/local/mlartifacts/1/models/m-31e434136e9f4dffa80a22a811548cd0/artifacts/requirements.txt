@@ -1,0 +1,6 @@
+mlflow==3.5.1
+tensorflow
+keras
+numpy
+pandas
+scikit-learn

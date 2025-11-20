@@ -1,6 +1,6 @@
 DATA_PATH = "/app/winequality.csv"
 
-MLFLOW_URI = "http://mlflow:5000" #mlflow
+MLFLOW_URI = "http://mlflow:5000" 
 
 EXPERIMENT_NAME = "wine-quality-prediction"
 
