@@ -49,8 +49,8 @@ def train_and_log_model(model, X_train, y_train, X_val, y_val, epochs=MODEL_PARA
             ]
         )
 
-        print(f"✓ Modèle loggé et enregistré: {MODEL_NAME}")
-        print(f"✓ Version: {model_info.registered_model_version}")
+        print(f"Modèle loggé et enregistré: {MODEL_NAME}")
+        print(f"Version: {model_info.registered_model_version}")
         print(f"Validation loss: {loss}")
         
         return model, model_info
