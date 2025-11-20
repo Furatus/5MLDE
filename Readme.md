@@ -1,3 +1,6 @@
+[Lien vers le repository github (Furatus/5MLDE)](https://github.com/Furatus/5MLDE)
+
+
 # 🍷 Wine Quality MLDE
 
 Projet MLDE déployant un modèle pour prédire la qualité du vin avec entraînement automatisé, suivi des expériences et API de prédiction.

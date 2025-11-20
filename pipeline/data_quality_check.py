@@ -70,9 +70,9 @@ def check_data(csv_path: str) -> dict:
         logger.info("Résultats du data check :")
         for key, value in results.items():
             if value:
-                logger.info(f"✓ {key}: OK")
+                logger.info(f"{key}: OK")
             else:
-                logger.error(f"✗ {key}: FAIL")
+                logger.error(f"{key}: FAIL")
 
         return results
     
@@ -102,8 +102,8 @@ def check_model() -> dict:
         latest_version = max(versions, key=lambda x: int(x.version))
         run_id = latest_version.run_id
 
-        logger.info(f"✓ Modèle version: {latest_version.version}")
-        logger.info(f"✓ Run ID: {run_id}")
+        logger.info(f"Modèle version: {latest_version.version}")
+        logger.info(f"Run ID: {run_id}")
 
         # Récupérer les métriques du run
         run = client.get_run(run_id)
@@ -126,13 +126,12 @@ def check_model() -> dict:
         if mae_value is not None:
             results["mae_ok"] = mae_value <= MIN_MAE
             if results["mae_ok"]:
-                logger.info(f"✓ MAE: {mae_value:.4f} <= {MIN_MAE} (seuil)")
+                logger.info(f"MAE: {mae_value:.4f} <= {MIN_MAE} (seuil)")
             else:
-                logger.error(f"✗ MAE: {mae_value:.4f} > {MIN_MAE} (seuil dépassé!)")
+                logger.error(f"MAE: {mae_value:.4f} > {MIN_MAE} (seuil dépassé!)")
         else:
             results["mae_ok"] = None
-            logger.warning(f"⚠ Aucune métrique MAE trouvée parmi {mae_keys}")
-
+            logger.warning(f"Aucune métrique MAE trouvée parmi {mae_keys}")
         # Vérifier Loss
         loss_keys = ["loss", "test_loss", "val_loss"]
         loss_value = None
@@ -144,22 +143,21 @@ def check_model() -> dict:
         if loss_value is not None:
             results["loss_ok"] = loss_value <= MAX_LOSS
             if results["loss_ok"]:
-                logger.info(f"✓ Loss: {loss_value:.4f} <= {MAX_LOSS} (seuil)")
+                logger.info(f"Loss: {loss_value:.4f} <= {MAX_LOSS} (seuil)")
             else:
-                logger.error(f"✗ Loss: {loss_value:.4f} > {MAX_LOSS} (seuil dépassé!)")
+                logger.error(f"Loss: {loss_value:.4f} > {MAX_LOSS} (seuil dépassé!)")
         else:
             results["loss_ok"] = None
-            logger.warning(f"⚠ Aucune métrique Loss trouvée parmi {loss_keys}")
+            logger.warning(f"Aucune métrique Loss trouvée parmi {loss_keys}")
 
         logger.info("Résumé du model check :")
         for k, v in results.items():
             if v is None:
-                logger.warning(f" - {k}: ⚠ (métrique absente)")
+                logger.warning(f" - {k}: (métrique absente)")
             elif v:
-                logger.info(f" - {k}: ✓ OK")
+                logger.info(f" - {k}: OK")
             else:
-                logger.error(f" - {k}: ✗ FAIL")
-
+                logger.error(f" - {k}: FAIL")
         return results
 
     except Exception as e:

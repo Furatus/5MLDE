@@ -29,6 +29,8 @@ services:
     #image : prefecthq/prefect:3.5.0-python3.12-conda
     build: ./prefect_server
     container_name: prefect_server
+    #environment:
+      #PREFECT_API_DATA
     ports:
       - "4200:4200"
     depends_on:
